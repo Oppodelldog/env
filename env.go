@@ -336,7 +336,10 @@ func set(field reflect.Value, sf reflect.StructField, value string, funcMap map[
 			return newParseError(sf, err)
 		}
 
-		fieldee.Set(reflect.ValueOf(val))
+		var v2 = reflect.ValueOf(val)
+		fmt.Println(fieldee.Interface(), v2.Interface())
+			fieldee.Set(reflect.ValueOf(val))
+
 		return nil
 	}
 
@@ -347,7 +350,8 @@ func set(field reflect.Value, sf reflect.StructField, value string, funcMap map[
 			return newParseError(sf, err)
 		}
 
-		fieldee.Set(reflect.ValueOf(val).Convert(typee))
+			fieldee.Set(reflect.ValueOf(val).Convert(typee))
+
 		return nil
 	}
 
